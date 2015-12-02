@@ -63,7 +63,7 @@ gulp.task('generate-ns', () => {
 });
 ```
 
-The namespace file will generate in the `dist/ns.js`.
+The namespace file will be generated in the `dist/ns.js`.
 
 Run this task, the `ns.js` may contain what like this.
 
@@ -81,3 +81,7 @@ React.createClass({
   }
 });
 ```
+
+Now the package's component will live in the unique namespace.
+
+Awesome!
