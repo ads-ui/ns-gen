@@ -38,14 +38,14 @@ var generateNS = require('ns-gen').generateNS;
 var namespace = generateNS(rootPath);
 ```
 
-### Generate the namespace file
+### Generate the namespace javascript file
 
 You also can generate the js file that the other js can require it.
 
 ```js
 var fs = require('fs');
-var generateNSFile = require('ns-gen').generateNSFile;
-fs.writeFileSync('ns.js', generateNSFile());
+var generateJsFile = require('ns-gen').generateJsFile;
+fs.writeFileSync('ns.js', generateJsFile());
 ```
 
 Also can use `gulp` to write to the destination file.
@@ -53,11 +53,11 @@ Also can use `gulp` to write to the destination file.
 ```js
 var source = require('vinyl-source-stream');
 var vinylBuffer = require('vinyl-buffer');
-var generateNSFile = require('ns-gen').generateNSFile;
+var generateJsFile = require('ns-gen').generateJsFile;
 
 gulp.task('generate-ns', () => {
   var stream = source('ns.js');
-  stream.write(generateNSFile());
+  stream.write(generateJsFile());
   stream.end();
   return stream.pipe(vinylBuffer()).pipe(gulp.dest('dist/'));
 });
@@ -83,5 +83,43 @@ React.createClass({
 ```
 
 Now the package's component will live in the unique namespace.
+
+### Generate the sass file
+
+The process of scss file generation is like the js file.
+
+You can use the simple nodejs script to generate it.
+
+```js
+var fs = require('fs');
+var generateSassFile = require('ns-gen').generateSassFile;
+fs.writeFileSync('ns.sass', generateJsFile('css-ns'));
+```
+
+Or use the gulp task to generate it.
+
+```js
+gulp.task('generate-sass', () => {
+  var generateSassFile = require('ns-gen').generateSassFile;
+  var stream = source('ns.scss');
+  stream.write(generateSassFile('css-ns'));
+  stream.end();
+  return stream.pipe(vinylBuffer()).pipe(gulp.dest('dist/'));
+});
+```
+
+Then the generated sass file is like this:
+
+```css
+$css-ns: package-name-version-hash;
+```
+
+The sass file want to use the namespace can import it like this.
+
+```css
+@import "ns";
+```
+
+Now the component's style will wrap in this namespace to prevent the future conflict.
 
 Awesome!
