@@ -1,0 +1,27 @@
+{
+  "name": "ns-gen",
+  "version": "1.0.0",
+  "description": "The npm package namespace generator ",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ads-ui/ns-gen.git"
+  },
+  "keywords": [
+    "namespace",
+    "generator"
+  ],
+  "author": "liuxiong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ads-ui/ns-gen/issues"
+  },
+  "homepage": "https://github.com/ads-ui/ns-gen#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.2.0"
+  }
+}
