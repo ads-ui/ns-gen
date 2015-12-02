@@ -22,6 +22,8 @@
   "homepage": "https://github.com/ads-ui/ns-gen#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-mocha": "^2.2.0"
+    "gulp-mocha": "^2.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

@@ -13,4 +13,12 @@ function generateNS(packagePath) {
   return packageJson.name + '-' + packageJson.version + '-' + hashVal;
 }
 
-module.exports = generateNS;
+function generateNSFile(packagePath) {
+  var ns = generateNS(packagePath);
+  return "module.exports = \"" + ns + "\";";
+}
+
+module.exports = {
+  generateNS: generateNS,
+  generateNSFile: generateNSFile
+};
