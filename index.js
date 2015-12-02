@@ -13,12 +13,23 @@ function generateNS(packagePath) {
   return packageJson.name + '-' + packageJson.version + '-' + hashVal;
 }
 
-function generateNSFile(packagePath) {
+function generateJsFile(packagePath) {
   var ns = generateNS(packagePath);
   return "module.exports = \"" + ns + "\";";
 }
 
+function generateSassFile(packagePath, nsVarName) {
+  if(arguments.length === 1) {
+    nsVarName = packagePath;
+    packagePath = null;
+  }
+  if(!nsVarName) throw new Error('the nsVarName parameter isnot valid');
+  var ns = generateNS(packagePath);
+  return '$' + nsVarName + ': ' + ns + ';';
+}
+
 module.exports = {
   generateNS: generateNS,
-  generateNSFile: generateNSFile
+  generateJsFile: generateJsFile,
+  generateSassFile: generateSassFile
 };
