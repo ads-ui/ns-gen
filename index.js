@@ -2,7 +2,7 @@ var path = require('path');
 var fs = require('fs');
 var crypto = require('crypto');
 
-function generateNS(packagePath, callback) {
+function generateNS(packagePath) {
   if(!packagePath) packagePath = process.cwd();
   var jsonFilePath = path.resolve(packagePath, 'package.json');
   var content = fs.readFileSync(jsonFilePath, 'utf8');
