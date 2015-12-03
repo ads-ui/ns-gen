@@ -2,6 +2,11 @@ var path = require('path');
 var fs = require('fs');
 var crypto = require('crypto');
 
+// replace all the character that isn't word or '-' to '-' character.
+function convertName(name) {
+  return name.replace(/[^\w-]+/g, '-');
+}
+
 function generateNS(packagePath) {
   if(!packagePath) packagePath = process.cwd();
   var jsonFilePath = path.resolve(packagePath, 'package.json');
@@ -10,7 +15,7 @@ function generateNS(packagePath) {
   shasum.update(content);
   var hashVal = shasum.digest('hex').slice(0, 6);
   var packageJson = JSON.parse(content);
-  return packageJson.name + '-' + packageJson.version + '-' + hashVal;
+  return convertName(packageJson.name + '-' + packageJson.version + '-' + hashVal);
 }
 
 function generateJsFile(packagePath) {

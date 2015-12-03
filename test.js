@@ -7,7 +7,7 @@ describe('generateNS', function() {
   it('should get the valid name', function () {
     var value = generateNS();
     console.log(value);
-    assert.ok(/^ns-gen-0\.3\.0/.test(value));
+    assert.ok(/^ns-gen-0-4-0/.test(value));
   });
 
   it('should generate the valid file content', function() {
